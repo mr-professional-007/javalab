@@ -1,0 +1,180 @@
+Here are the Java programs for each of the given problems:
+
+# Program 10C: Loading Phone Numbers and Names using Hash
+
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+
+public class PhoneNumberLoader {
+    public static void main(String[] args) {
+        HashMap<String, String> phoneBook = new HashMap<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader("phonebook.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                phoneBook.put(parts[0], parts[1]);
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+        }
+        System.out.println("Phone Book:");
+        for (String phoneNumber : phoneBook.keySet()) {
+            System.out.println(phoneNumber + ": " + phoneBook.get(phoneNumber));
+        }
+    }
+}
+
+
+# Program 11: Applet Program to Display a Simple Message
+
+
+import javax.swing.JApplet;
+import java.awt.Graphics;
+
+public class SimpleApplet extends JApplet {
+    @Override
+    public void paint(Graphics g) {
+        g.drawString("Hello, World!", 50, 50);
+    }
+}
+
+
+# Program 12A: Computing Factorial using Applet
+
+
+import javax.swing.JApplet;
+import java.awt.Graphics;
+import java.awt.TextField;
+import java.awt.Button;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class FactorialApplet extends JApplet {
+    private TextField inputField;
+    private Button calculateButton;
+
+    @Override
+    public void init() {
+        inputField = new TextField(10);
+        calculateButton = new Button("Calculate");
+        add(inputField);
+        add(calculateButton);
+        calculateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int number = Integer.parseInt(inputField.getText());
+                int factorial = calculateFactorial(number);
+                System.out.println("Factorial of " + number + ": " + factorial);
+            }
+        });
+    }
+
+    private int calculateFactorial(int number) {
+        int factorial = 1;
+        for (int i = 2; i <= number; i++) {
+            factorial *= i;
+        }
+        return factorial;
+    }
+}
+
+
+# Program 12B: Passing Parameters using Applet
+
+
+import javax.swing.JApplet;
+import java.awt.Graphics;
+import java.awt.TextField;
+import java.awt.Button;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class ParameterApplet extends JApplet {
+    private TextField nameField;
+    private Button greetButton;
+
+    @Override
+    public void init() {
+        nameField = new TextField(10);
+        greetButton = new Button("Greet");
+        add(nameField);
+        add(greetButton);
+        greetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String name = nameField.getText();
+                System.out.println("Hello, " + name + "!");
+            }
+        });
+    }
+}
+
+
+# Program 13A: Handling Mouse Events
+
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class MouseEventHandler extends JPanel {
+    public MouseEventHandler() {
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("Mouse clicked at (" + e.getX() + ", " + e.getY() + ")");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                System.out.println("Mouse pressed at (" + e.getX() + ", " + e.getY() + ")");
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                System.out.println("Mouse released at (" + e.getX() + ", " + e.getY() + ")");
+            }
+        });
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Mouse Event Handler");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(new MouseEventHandler());
+        frame.setSize(400, 300);
+        frame.setVisible(true);
+    }
+}
+
+
+# Program 13B: Handling Key Events
+
+
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class KeyEventHandler extends JPanel {
+    public KeyEventHandler() {
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                System.out.println("Key pressed: " + e.getKeyChar());
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                System.out.println("Key released: " + e.getKeyChar());
+            }
+        });
+        setFocusable(true);
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Key Event Handler");
+        frame
