@@ -1,0 +1,190 @@
+Here are the Java programs for each of the given problems:
+
+# Program 5: Palindrome Checker
+
+import java.util.Scanner;
+
+public class PalindromeChecker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+        if (isPalindrome(input)) {
+            System.out.println(input + " is a palindrome.");
+        } else {
+            System.out.println(input + " is not a palindrome.");
+        }
+    }
+
+    public static boolean isPalindrome(String str) {
+        int left = 0;
+        int right = str.length() - 1;
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+}
+
+
+# Program 6A: Abstract Class
+
+public abstract class Animal {
+    public abstract void sound();
+}
+
+class Dog extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Woof!");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Meow!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal dog = new Dog();
+        Animal cat = new Cat();
+        dog.sound();
+        cat.sound();
+    }
+}
+
+
+# Program 6B: Interface Implementation
+
+interface Printable {
+    void print();
+}
+
+class Document implements Printable {
+    @Override
+    public void print() {
+        System.out.println("Printing a document...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Printable doc = new Document();
+        doc.print();
+    }
+}
+
+
+# Program 7A: Inner Classes
+
+public class OuterClass {
+    private int x = 10;
+
+    public class InnerClass {
+        public void printX() {
+            System.out.println("Value of x: " + x);
+        }
+    }
+
+    public static void main(String[] args) {
+        OuterClass outer = new OuterClass();
+        OuterClass.InnerClass inner = outer.new InnerClass();
+        inner.printX();
+    }
+}
+
+
+# Program 7B: User-Defined Package
+Create a package named com.example.mypackage and add a class MyClass.java inside it:
+
+
+package com.example.mypackage;
+
+public class MyClass {
+    public static void main(String[] args) {
+        System.out.println("Hello from my package!");
+    }
+}
+
+
+# Program 8A: Multiple Catch Blocks
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            int x = 10 / 0;
+        } catch (ArithmeticException e) {
+            System.out.println("Caught ArithmeticException: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Caught Exception: " + e.getMessage());
+        }
+    }
+}
+
+
+# Program 9: Multi-Thread Application
+
+class MyThread extends Thread {
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Thread " + Thread.currentThread().getId() + ": " + i);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyThread thread1 = new MyThread();
+        MyThread thread2 = new MyThread();
+        MyThread thread3 = new MyThread();
+        thread1.start();
+        thread2.start();
+        thread3.start();
+    }
+}
+
+
+# Program 10A: File Class Properties
+
+import java.io.File;
+
+public class Main {
+    public static void main(String[] args) {
+        File file = new File("example.txt");
+        System.out.println("File name: " + file.getName());
+        System.out.println("File path: " + file.getAbsolutePath());
+        System.out.println("File size: " + file.length() + " bytes");
+        System.out.println("Is file readable? " + file.canRead());
+        System.out.println("Is file writable? " + file.canWrite());
+    }
+}
+
+
+# Program 10B: ArrayList Class
+
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Cherry");
+        System.out.println("ArrayList: " + list);
+        System.out.println("Size: " + list.size());
+        System.out.println("Is empty? " + list.isEmpty());
+        list.remove(1);
+        System.out.println("
